@@ -1,12 +1,19 @@
 body{
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    font-family: sans-serif;
-    margin: 0;
+    background-color: linear-gradient(to right, #74ebd5, #ACB6E5);
 }
 
-.textbox-container{
+.textbox-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.textbox-content {
+    font-size: 16px;
+    line-height: 1.5;
+}
+.textbox{
+    max-width: 600px;
+    margin: auto;
     background: rgba(255, 255, 255, 0.15); /* transparent white */
     border-radius: 15px;
     padding: 20px;
@@ -14,12 +21,5 @@ body{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);           /* main glass effect */
     -webkit-backdrop-filter: blur(10px);   
-    color: white;
-    position: absolute;
-    left: 100px;
-    top: 50px;
-}
-
-.textbox-header{
-    color: white;
+    color: black;
 }
