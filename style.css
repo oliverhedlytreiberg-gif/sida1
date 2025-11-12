@@ -5,3 +5,21 @@ body{
     font-family: sans-serif;
     margin: 0;
 }
+
+.textbox-container{
+    background: rgba(255, 255, 255, 0.15); /* transparent white */
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);           /* main glass effect */
+    -webkit-backdrop-filter: blur(10px);   
+    color: white;
+    position: absolute;
+    left: 100px;
+    top: 50px;
+}
+
+.textbox-header{
+    color: white;
+}
