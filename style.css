@@ -1,6 +1,6 @@
 body{
     background-image: linear-gradient( 45deg, black, rgb(75, 75, 75), rgb(110, 110, 110), rgb(138, 138, 138), rgb(167, 167, 167));
-    height: 100vh;
+    height: 200vh;
     margin: 0;
     color: black;
 }
@@ -32,10 +32,8 @@ body{
     margin-bottom: 10px;
 }
 table {
-    position: fixed;
-    margin: auto;
-    max-width: 25%;
-    max-height: 25%;
+    position: relative;
+    
 }
 td {   
     max-width: 600px;
