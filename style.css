@@ -31,3 +31,22 @@ body{
     font-weight: bold;
     margin-bottom: 10px;
 }
+table {
+    position: fixed;
+    margin: auto;
+    max-width: 25%;
+    max-height: 25%;
+}
+td {   
+    max-width: 600px;
+    margin: auto;
+    padding-top: 50px;
+    background: rgba(255, 255, 255, 0.15); /* transparent white */
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);           /* main glass effect */
+    -webkit-backdrop-filter: blur(10px);  
+    color: black;
+}
