@@ -31,7 +31,53 @@
 </body>
 
 <script>
-    
+    const componeter = {
+        cpu: {
+            namn: "cpu/processor",
+            användning: ""
+        },
+        moderkort: {
+            namn: "",
+            användning: ""
+        },
+        gpu: {
+            namn: "",
+            användning: ""
+        },
+        ram: {
+            namn: "",
+            användning: ""
+        },
+        ssd: {
+            namn: "",
+            användning: ""
+        },
+        hdd: {
+            namn: "",
+            användning: ""
+        },
+        psu: {
+            namn: "",
+            användning: ""
+        },
+        case: {
+            namn: "",
+            användning: ""
+        },
+        fan: {
+            namn: "",
+            användning: ""
+        },
+        cpukylare: {
+            namn: "",
+            användning: ""
+        },
+    };
+
+    function datacomponent(datakey) {
+        const data = componeter[datakey];
+        const textbox = document.getElementById('textbox');
+    }
 </script>
 
 </html>
