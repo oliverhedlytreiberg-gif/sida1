@@ -77,7 +77,28 @@
     function datacomponent(datakey) {
         const data = componeter[datakey];
         const textbox = document.getElementById('textbox');
+        const overlay = document.getElementById('overlay');
+
+        textbox.classList.add('show');
+        overlay.classList.add('show');
+
+    }
+
+    function closebtntextbox() {
+        const textbox = document.getElementById('textbox');
+        const overlay = document.getElementById('overlay');
+        textbox.classList.remove('show');
+        overlay.classList.remove('show');
     }
 </script>
+<div class="textbox-container" id="textbox">
+    <div class="textbox-header">
+        <h2 id="componeternamn">information</h2>
+        <botton class="closebtntextbox" onclick="closetextbox()">stäng</botton>
 
+    </div>
+    <div class="textbox-content" id="componentinfo">
+        <!-- skriva info här-->
+    </div>
+</div>
 </html>

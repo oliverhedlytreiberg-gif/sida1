@@ -48,3 +48,10 @@ td {
     -webkit-backdrop-filter: blur(10px);  
     color: black;
 }
+
+.closebtntextbox {
+    background-color: red;
+    color: black;
+    font-size: 12px;
+    font-family:'Times New Roman';
+}
