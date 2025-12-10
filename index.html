@@ -8,24 +8,66 @@
 </head>
 <body>
 
-<div class="textbox-container" id="textbox" >
+<div class="textbox-container" id="header-textbox" >
     <div class="textbox-header">daodac dator & hårdvara</div>
     <div class="textbox-content">
         <p></p>
     </div>
 </div>
 
-<table>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-    <td>10</td>
+<!--
+  Images: to show pictures instead of text, place your image files in this folder
+  (same folder as `index.html`) and replace the commented <img> example below.
+  Example: <img class="component-img" src="cpu.png" alt="CPU">
+  Keep the onclick handler on the <td> so clicks still open the info box.
+-->
+<table id="data-table">
+    <tr>
+        <td onclick="openComponentModal('cpu')">
+            <!-- Example image (replace with your file):
+            <img class="component-img" src="cpu.png" alt="CPU">
+            -->
+            <span class="component-label">CPU</span>
+        </td>
+        <td onclick="openComponentModal('moderkort')">
+            <!-- <img class="component-img" src="moderkort.png" alt="Moderkort"> -->
+            <span class="component-label">Moderkort</span>
+        </td>
+        <td onclick="openComponentModal('gpu')">
+            <!-- <img class="component-img" src="gpu.png" alt="GPU"> -->
+            <span class="component-label">GPU</span>
+        </td>
+        <td onclick="openComponentModal('ram')">
+            <!-- <img class="component-img" src="ram.png" alt="RAM"> -->
+            <span class="component-label">RAM</span>
+        </td>
+        <td onclick="openComponentModal('ssd')">
+            <!-- <img class="component-img" src="ssd.png" alt="SSD"> -->
+            <span class="component-label">SSD</span>
+        </td>
+    </tr>
+    <tr>
+        <td onclick="openComponentModal('hdd')">
+            <!-- <img class="component-img" src="hdd.png" alt="HDD"> -->
+            <span class="component-label">HDD</span>
+        </td>
+        <td onclick="openComponentModal('psu')">
+            <!-- <img class="component-img" src="psu.png" alt="PSU"> -->
+            <span class="component-label">PSU</span>
+        </td>
+        <td onclick="openComponentModal('case')">
+            <!-- <img class="component-img" src="case.png" alt="Case"> -->
+            <span class="component-label">Case</span>
+        </td>
+        <td onclick="openComponentModal('fan')">
+            <!-- <img class="component-img" src="fan.png" alt="Fan"> -->
+            <span class="component-label">Fan</span>
+        </td>
+        <td onclick="openComponentModal('cpukylare')">
+            <!-- <img class="component-img" src="cpukylare.png" alt="CPU Kylare"> -->
+            <span class="component-label">CPU Kylare</span>
+        </td>
+    </tr>
 </table>
 
 </body>
@@ -50,7 +92,7 @@
         },
         ssd: {
             namn: "",
-            användning: ""
+          användning: ""
         },
         hdd: {
             namn: "",
@@ -74,32 +116,46 @@
         },
     };
 
-    function datacomponent(datakey) {
-        const data = componeter[datakey];
-        const textbox = document.getElementById('textbox');
+    let currentComponent = null;
+
+    function openComponentModal(componentKey) {
+        currentComponent = componentKey;
+        const data = componeter[componentKey];
+        const textbox = document.getElementById('modal-textbox');
         const overlay = document.getElementById('overlay');
+        const header = document.getElementById('componeternamn');
+        const content = document.getElementById('componentinfo');
+
+        header.textContent = data.namn || componentKey;
+        
+        content.innerHTML = `
+            <div class="info-display">
+                <div class="info-item">
+                    <label>Användning:</label>
+                    <p>${data.användning || 'Ingen info'}</p>
+                </div>
+            </div>
+        `;
 
         textbox.classList.add('show');
         overlay.classList.add('show');
-
     }
 
     function closebtntextbox() {
-        const textbox = document.getElementById('textbox');
+        const textbox = document.getElementById('modal-textbox');
         const overlay = document.getElementById('overlay');
         textbox.classList.remove('show');
         overlay.classList.remove('show');
     }
 </script>
 <div class="textbox-overlay" id="overlay" onclick="closebtntextbox()"></div>
-<div class="textbox-container" id="textbox">
+<div class="textbox-container" id="modal-textbox">
     <div class="textbox-header">
         <h2 id="componeternamn">information</h2>
-        <botton class="closebtntextbox" onclick="closetextbox()">stäng</botton>
-
     </div>
     <div class="textbox-content" id="componentinfo">
-        <!-- skriva info här-->
+        <!-- info här-->
     </div>
+    <button class="closebtntextbox" onclick="closebtntextbox()">stäng</button>
 </div>
 </html>
