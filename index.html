@@ -22,52 +22,7 @@
   Keep the onclick handler on the <td> so clicks still open the info box.
 -->
 <table id="data-table">
-    <tr>
-        <td onclick="openComponentModal('cpu')">
-            <!-- Example image (replace with your file):
-            <img class="component-img" src="cpu.png" alt="CPU">
-            -->
-            <span class="component-label">CPU</span>
-        </td>
-        <td onclick="openComponentModal('moderkort')">
-            <!-- <img class="component-img" src="moderkort.png" alt="Moderkort"> -->
-            <span class="component-label">Moderkort</span>
-        </td>
-        <td onclick="openComponentModal('gpu')">
-            <!-- <img class="component-img" src="gpu.png" alt="GPU"> -->
-            <span class="component-label">GPU</span>
-        </td>
-        <td onclick="openComponentModal('ram')">
-            <!-- <img class="component-img" src="ram.png" alt="RAM"> -->
-            <span class="component-label">RAM</span>
-        </td>
-        <td onclick="openComponentModal('ssd')">
-            <!-- <img class="component-img" src="ssd.png" alt="SSD"> -->
-            <span class="component-label">SSD</span>
-        </td>
-    </tr>
-    <tr>
-        <td onclick="openComponentModal('hdd')">
-            <!-- <img class="component-img" src="hdd.png" alt="HDD"> -->
-            <span class="component-label">HDD</span>
-        </td>
-        <td onclick="openComponentModal('psu')">
-            <!-- <img class="component-img" src="psu.png" alt="PSU"> -->
-            <span class="component-label">PSU</span>
-        </td>
-        <td onclick="openComponentModal('case')">
-            <!-- <img class="component-img" src="case.png" alt="Case"> -->
-            <span class="component-label">Case</span>
-        </td>
-        <td onclick="openComponentModal('fan')">
-            <!-- <img class="component-img" src="fan.png" alt="Fan"> -->
-            <span class="component-label">Fan</span>
-        </td>
-        <td onclick="openComponentModal('cpukylare')">
-            <!-- <img class="component-img" src="cpukylare.png" alt="CPU Kylare"> -->
-            <span class="component-label">CPU Kylare</span>
-        </td>
-    </tr>
+    <!-- Table will be populated dynamically by JavaScript -->
 </table>
 
 </body>
@@ -76,63 +31,95 @@
     const componeter = {
         cpu: {
             namn: "cpu/processor",
-            användning: "",
+            användning: "cpu används för att utföra instruktioner i programvara och är en central del för datorn",
             img: "",
-            socket: "socket är olika för varje företag som skapar processorer och moderkort"  // Add socket class (e.g., "LGA 1700", "AM4")
+            socket: "socket är olika för varje företag som skapar processorer och moderkort",  // Add socket class (e.g., "LGA 1700", "AM4")
+            pris: "priset på en cpu varierar beroende på prestanda och märke oftaste dyrare än andra komponenter"
         },
         moderkort: {
             namn: "Moderkort",
-            användning: "",
-            img: ""
+            användning: "moderkort fungerar som en central hub för alla datorns komponenter att kommunicera med varandra",
+            img: "",
+            casetower: "moderkort finns i olika storlekar ex. atx, micro atx, mini itx mm för att passa i olika chassin",
+            socket: "moderkortets socket måste matcha cpu socketen",  // Add socket compatibility (e.g., "LGA 1700", "AM4")
+            pris: "priset på ett moderkort varierar beroende på storlek, märke och funktioner oftaste billigare än cpu"
         },
         gpu: {
             namn: "Gpu/grafikkort",
-            användning: "",
-            img: ""
+            användning: "gpu används för att rendera bilder och grafik i programvara och är en central del för datorn",
+            img: "",
+            pris: "priset på ett gpu varierar beroende på prestanda och märke oftaste dyrare än cpu"
         },
         ram: {
             namn: "RAM",
-            användning: "",
+            användning: "ramminne används för att lagra data temporärt när datorn är påslagen och är snabbare än både ssd och hdd",
             img: "",
-            ramminne: "ramminne används för att lagra data temporärt när datorn är påslagen och är snabbare än både ssd och hdd"
+            ramminne: "ramminne används för att lagra data temporärt när datorn är påslagen och är snabbare än både ssd och hdd",
+            pris: "priset på ramminne varierar beroende på storlek, hastighet och märke oftaste billigare än gpu"
         },
         ssd: {
             namn: "SSD",
-            användning: "",
             img: "",
             ssdfunktion: "ssd används för att lagra data permanent även när datorn är avstängd och är en elektronisk enhet till skillnad från hdd som är en mekanisk enhet",
-            lagring: "ssd är oftast snabbare än hdd för samma pris"
+            lagring: "ssd är oftast snabbare än hdd för samma pris",
+            pris: "priset på ssd varierar beroende på storlek, hastighet och märke oftaste dyrare än hdd"
         },
         hdd: {
             namn: "HDD",
-            användning: "",
             img: "",
             hddfunktion: "hdd används för att lagra data permanent även när datorn är avstängd och är en mekanisk enhet till skillnad från ssd som är en elektronisk enhet",
-            lagring: "hdd har oftast större lagringskapacitet än ssd för samma pris"
+            lagring: "hdd har oftast större lagringskapacitet än ssd för samma pris",
+            pris: "priset på hdd varierar beroende på storlek, hastighet och märke oftaste billigare än ssd"
         },
         psu: {
             namn: "PSU",
-            användning: "",
-            img: ""
+            användning: "psu används för att förse datorns komponenter med ström och är en viktig del för datorn",
+            img: "",
+            pris: "priset på en psu varierar beroende på effekt, märke och certifiering oftaste billigare än hdd"
         },
         case: {
             namn: "chassi/case",
-            användning: "",
+            användning: "chassi används för att hålla datorns komponenter i en strukturerad och och är en viktig del för datorn",
             img: "",
-            casetower: "casetower är olika storlekar på chassin ex. atx, micro atx, mini itx mm"
+            casetower: "casetower är olika storlekar på chassin ex. atx, micro atx, mini itx mm",
+            pris: "priset på ett chassi varierar beroende på storlek, märke och funktioner oftaste billigare än psu"
         },
         fan: {
             namn: "Chassifläkt/Fan",
-            användning: "",
-            img: ""
+            användning: "chassifläkt används för att kyla datorns komponenter och är en viktig del för datorn",
+            img: "",
+            pris: "priset på en chassifläkt varierar beroende på storlek, märke och funktioner oftaste billigare än case"
         },
         cpukylare: {
             namn: "CPU Kylare",
-            användning: "",
+            användning: "cpu kylare används för att kyla processorn och är en viktig del för datorn",
             img: "",            
-            socket: "kylar socketen måste matcha moderkortets socket och cpu socketen"  // Add socket compatibility (e.g., "LGA 1700, AM4")
+            socket: "kylar socketen måste matcha moderkortets socket och cpu socketen",  // Add socket compatibility (e.g., "LGA 1700, AM4")
+            pris: "priset på en cpu kylare varierar beroende på prestanda, märke och typ (luft/vatten) oftaste billigare än fan"
         }
     };
+
+    // Dynamically generate table based on components in the script
+    function generateTable() {
+        const table = document.getElementById('data-table');
+        const components = Object.keys(componeter);
+        let row;
+        
+        components.forEach((key, index) => {
+            if (index % 5 === 0) {
+                row = table.insertRow();
+            }
+            const cell = row.insertCell();
+            cell.onclick = () => openComponentModal(key);
+            cell.innerHTML = `
+                <!-- <img class="component-img" src="${key}.png" alt="${componeter[key].namn || key}"> -->
+                <span class="component-label">${componeter[key].namn || key}</span>
+            `;
+        });
+    }
+
+    // Generate the table when the page loads
+    generateTable();
 
     let currentComponent = null;
 
@@ -148,41 +135,55 @@
         
         content.innerHTML = `
             <div class="info-display">
-                ${data.img ? `<img class="component-model-img" src="${data.img}" alt="${componentKey}">` : ''}
+                ${data.img ? `<img class="component-modal-img" src="${data.img}" alt="${componentKey}">` : ''}
+                ${componentKey !== 'ssd' && componentKey !== 'hdd' ? `
                 <div class="info-item">
                     <label>Användning:</label>
                     <p>${data.användning || 'Ingen info'}</p>
                 </div>
-                ${data.socket ? `
+                ` : ''}
+                ${(componentKey === 'cpu' || componentKey === 'cpukylare' || componentKey === 'moderkort') && data.socket ? `
                 <div class="info-item">
                     <label>Socket:</label>
                     <p>${data.socket}</p>
                 </div>
                 ` : ''}
-                <div class="item-info">
-                    <label>casetower:</label>
-                    <p>${data.casetower || 'Ingen info'}</p>
+                ${(componentKey === 'case' || componentKey === 'moderkort') && data.casetower ? `
+                <div class="info-item">
+                    <label>Casetower:</label>
+                    <p>${data.casetower}</p>
                 </div>
+                ` : ''}
+                ${componentKey === 'hdd' && data.hddfunktion ? `
                 <div class="info-item">
                     <label>HDD funktion:</label>
-                    <p>${data.hddfunktion || 'Ingen info'}</p>
+                    <p>${data.hddfunktion}</p>
                 </div>
+                ` : ''}
+                ${componentKey === 'ssd' && data.ssdfunktion ? `
                 <div class="info-item">
                     <label>SSD funktion:</label>
-                    <p>${data.ssdfunktion || 'Ingen info'}</p>
+                    <p>${data.ssdfunktion}</p>
                 </div>
+                ` : ''}
+                ${(componentKey === 'hdd' || componentKey === 'ssd') && data.lagring ? `
                 <div class="info-item">
-                    <label>lagring:</label>
-                    <p>${data.lagring || 'Ingen info'}</p>
+                    <label>Lagring:</label>
+                    <p>${data.lagring}</p>
                 </div>
+                ` : ''}
+                ${componentKey === 'ram' && data.ramminne ? `
                 <div class="info-item">
-                    <label>ramminne:</label>
-                    <p>${data.ramminne || 'Ingen info'}</p>
+                    <label>Ramminne:</label>
+                    <p>${data.ramminne}</p>
                 </div>
+                ` : ''}
+                ${data.pris ? `
                 <div class="info-item">
-                    <label>pris:</label>
-                    <p>${data.pris || 'Ingen info'}</p>
-                    </div>
+                    <label>Pris:</label>
+                    <p>${data.pris}</p>
+                </div>
+                ` : ''}
             </div>
         `;
 
@@ -207,4 +208,22 @@
     </div>
     <button class="closebtntextbox" onclick="closebtntextbox()">stäng</button>
 </div>
+
+<table id="data-class">
+    <!-- Table will be populated dynamically by JavaScript -->
+</table>
+
+<script>
+    // You can add additional scripts here if needed
+    function generateclasstable(){
+        const table = document.getElementById('data-class');
+        const inutenheter = {
+            'mus och tangentbord': 'input-enhet',
+            'skärm': 'output-enhet',
+        };
+        
+    }
+
+</script>
+
 </html>
