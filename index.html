@@ -76,44 +76,62 @@
     const componeter = {
         cpu: {
             namn: "cpu/processor",
-            användning: ""
+            användning: "",
+            img: "",
+            socket: "socket är olika för varje företag som skapar processorer och moderkort"  // Add socket class (e.g., "LGA 1700", "AM4")
         },
         moderkort: {
             namn: "Moderkort",
-            användning: ""
+            användning: "",
+            img: ""
         },
         gpu: {
             namn: "Gpu/grafikkort",
-            användning: ""
+            användning: "",
+            img: ""
         },
         ram: {
             namn: "RAM",
-            användning: ""
+            användning: "",
+            img: "",
+            ramminne: "ramminne används för att lagra data temporärt när datorn är påslagen och är snabbare än både ssd och hdd"
         },
         ssd: {
             namn: "SSD",
-          användning: ""
+            användning: "",
+            img: "",
+            ssdfunktion: "ssd används för att lagra data permanent även när datorn är avstängd och är en elektronisk enhet till skillnad från hdd som är en mekanisk enhet",
+            lagring: "ssd är oftast snabbare än hdd för samma pris"
         },
         hdd: {
             namn: "HDD",
-            användning: ""
+            användning: "",
+            img: "",
+            hddfunktion: "hdd används för att lagra data permanent även när datorn är avstängd och är en mekanisk enhet till skillnad från ssd som är en elektronisk enhet",
+            lagring: "hdd har oftast större lagringskapacitet än ssd för samma pris"
         },
         psu: {
             namn: "PSU",
-            användning: ""
+            användning: "",
+            img: ""
         },
         case: {
             namn: "chassi/case",
-            användning: ""
+            användning: "",
+            img: "",
+            casetower: "casetower är olika storlekar på chassin ex. atx, micro atx, mini itx mm"
         },
         fan: {
             namn: "Chassifläkt/Fan",
-            användning: ""
+            användning: "",
+            img: ""
         },
         cpukylare: {
             namn: "CPU Kylare",
-            användning: ""
-        },
+            användning: "",
+            img: "",            
+            socket: "kylar socketen måste matcha moderkortets socket och cpu socketen"  // Add socket compatibility (e.g., "LGA 1700, AM4")
+        }
     };
 
     let currentComponent = null;
@@ -130,9 +148,36 @@
         
         content.innerHTML = `
             <div class="info-display">
+                ${data.img ? `<img class="component-model-img" src="${data.img}" alt="${componentKey}">` : ''}
                 <div class="info-item">
                     <label>Användning:</label>
                     <p>${data.användning || 'Ingen info'}</p>
+                </div>
+                ${data.socket ? `
+                <div class="info-item">
+                    <label>Socket:</label>
+                    <p>${data.socket}</p>
+                </div>
+                ` : ''}
+                <div class="item-info">
+                    <label>casetower:</label>
+                    <p>${data.casetower || 'Ingen info'}</p>
+                </div>
+                <div class="info-item">
+                    <label>HDD funktion:</label>
+                    <p>${data.hddfunktion || 'Ingen info'}</p>
+                </div>
+                <div class="info-item">
+                    <label>SSD funktion:</label>
+                    <p>${data.ssdfunktion || 'Ingen info'}</p>
+                </div>
+                <div class="info-item">
+                    <label>lagring:</label>
+                    <p>${data.lagring || 'Ingen info'}</p>
+                </div>
+                <div class="info-item">
+                    <label>ramminne:</label>
+                    <p>${data.ramminne || 'Ingen info'}</p>
                 </div>
             </div>
         `;
