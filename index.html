@@ -214,15 +214,144 @@
 </table>
 
 <script>
-    // You can add additional scripts here if needed
-    function generateclasstable(){
+    // Computer Input/Output Components
+    const inutenheter = {
+        keyboard: {
+            namn: "Tangentbord",
+            typ: "Input-enhet",
+            anslutning: "USB, Bluetooth, PS/2",
+            användning: "Används för textinmatning och att ge kommandon till datorn",
+            img: "",
+            pris: "Priset varierar beroende på typ (mekaniskt/membrand), funktioner och märke"
+        },
+        mouse: {
+            namn: "Datormus",
+            typ: "Input-enhet",
+            anslutning: "USB, Bluetooth, PS/2",
+            användning: "Används för att styra pekaren på skärmen och navigera i program",
+            img: "",
+            pris: "Priset varierar beroende på dpi, funktioner och märke"
+        },
+        monitor: {
+            namn: "Skärm/Monitor",
+            typ: "Output-enhet",
+            anslutning: "HDMI, DisplayPort, VGA, USB-C",
+            användning: "Visar visuell information från datorn som grafik, text och bilder",
+            img: "",
+            pris: "Priset varierar beroende på storlek, upplösning, paneltyp och uppdateringsfrekvens"
+        },
+        speakers: {
+            namn: "Högtalare",
+            typ: "Output-enhet",
+            anslutning: "3.5mm jack, USB, Bluetooth, HDMI",
+            användning: "Återger ljud från datorn som musik, spel och systemljud",
+            img: "",
+            pris: "Priset varierar beroende på kvalitet, effekt och funktioner"
+        },
+        printer: {
+            namn: "Skrivare",
+            typ: "Output-enhet",
+            anslutning: "USB, nätverk (Ethernet/WiFi), trådlöst",
+            användning: "Skriver ut fysiska kopior av dokument, bilder och andra filer",
+            img: "",
+            pris: "Priset varierar beroende på typ (bläckstråle/laser), funktioner och hastighet"
+        },
+        microphone: {
+            namn: "Mikrofon",
+            typ: "Input-enhet",
+            anslutning: "3.5mm jack, USB, Bluetooth",
+            användning: "Tar in ljud från användaren för inspelning, kommunikation och röststyrning",
+            img: "",
+            pris: "Priset varierar beroende på kvalitet, typ och funktioner"
+        },
+        webcam: {
+            namn: "Webbkamera",
+            typ: "Input-enhet",
+            anslutning: "USB, inbyggd",
+            användning: "Tar in video och bilder för videokonferenser, streaming och bildinspelning",
+            img: "",
+            pris: "Priset varierar beroende på upplösning, bildhastighet och funktioner"
+        },
+        headphones: {
+            namn: "Hörlurar",
+            typ: "Output-enhet",
+            anslutning: "3.5mm jack, USB, Bluetooth",
+            användning: "Ger privat ljudupplevelse för musik, spel och kommunikation",
+            img: "",
+            pris: "Priset varierar beroende på ljudkvalitet, komfort och funktioner"
+        },
+        joystick: {
+            namn: "Styrenhet/Joystick",
+            typ: "Input-enhet",
+            anslutning: "USB",
+            användning: "Används främst för spel och simulering för precisionskontroll",
+            img: "",
+            pris: "Priset varierar beroende på komplexitet och funktioner"
+        },
+        scanner: {
+            namn: "Skanner",
+            typ: "Input-enhet",
+            anslutning: "USB, nätverk",
+            användning: "Skannar fysiska dokument och bilder till digitala filer",
+            img: "",
+            pris: "Priset varierar beroende på typ, upplösning och hastighet"
+        }
+    };
+
+    // Dynamically generate I/O table based on components in the script
+    function generateclasstable() {
         const table = document.getElementById('data-class');
-        const inutenheter = {
-            'mus och tangentbord': 'input-enhet',
-            'skärm': 'output-enhet',
-        };
+        const components = Object.keys(inutenheter);
+        let row;
         
+        components.forEach((key, index) => {
+            if (index % 4 === 0) {  // 4 columns for I/O table
+                row = table.insertRow();
+            }
+            const cell = row.insertCell();
+            cell.onclick = () => openClassModal(key);
+            cell.innerHTML = `
+                <span class="component-label">${inutenheter[key].namn}</span>
+            `;
+        });
     }
+
+    function openClassModal(key) {
+        const data = inutenheter[key];
+        const textbox = document.getElementById('modal-textbox');
+        const overlay = document.getElementById('overlay');
+        const header = document.getElementById('componeternamn');
+        const content = document.getElementById('componentinfo');
+
+        header.textContent = data.namn;
+        
+        content.innerHTML = `
+            <div class="info-display">
+                <div class="info-item">
+                    <label>Typ:</label>
+                    <p>${data.typ}</p>
+                </div>
+                <div class="info-item">
+                    <label>Anslutning:</label>
+                    <p>${data.anslutning}</p>
+                </div>
+                <div class="info-item">
+                    <label>Användning:</label>
+                    <p>${data.användning}</p>
+                </div>
+                <div class="info-item">
+                    <label>Pris:</label>
+                    <p>${data.pris}</p>
+                </div>
+            </div>
+        `;
+
+        textbox.classList.add('show');
+        overlay.classList.add('show');
+    }
+
+    // Initialize the class table
+    generateclasstable();
 
 </script>
 

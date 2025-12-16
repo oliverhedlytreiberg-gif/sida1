@@ -50,15 +50,20 @@ table {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    max-width: 90%;
 }
-td {   
+
+td {
     padding: 15px 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: black;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.2s;
+    vertical-align: middle;
 }
+
 td:hover {
     background-color: rgba(255, 255, 255, 0.25);
 }
@@ -174,24 +179,5 @@ td {
 }
 
 #data-class {
-    margin: 40px auto 20px auto;  /* Space between tables */
-    border-collapse: separate;
-    border-spacing: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-#data-class td {
-    padding: 15px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: black;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-#data-class td:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    margin: 20px auto;
 }
