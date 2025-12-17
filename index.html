@@ -1,13 +1,22 @@
 <!DOCTYPE html>
+<!-- HTML5 document type declaration -->
 <html lang="sv">
+<!-- Root element, language set to Swedish -->
 <head>
+<!-- Head section for metadata -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Responsive viewport meta tag -->
 <meta charset="utf-8"/>
+<!-- Character encoding -->
 <title>daodac</title>
+<!-- Page title -->
 <link rel="stylesheet" href="style.css">
+<!-- Link to external CSS stylesheet -->
 </head>
 <body>
+<!-- Main body of the page -->
 
+<!-- Header section with title and empty content -->
 <div class="textbox-container" id="header-textbox" >
     <div class="textbox-header">daodac dator & hårdvara</div>
     <div class="textbox-content">
@@ -15,127 +24,144 @@
     </div>
 </div>
 
+<!-- Comment about adding images -->
 <!--
   Images: to show pictures instead of text, place your image files in this folder
   (same folder as `index.html`) and replace the commented <img> example below.
   Example: <img class="component-img" src="cpu.png" alt="CPU">
   Keep the onclick handler on the <td> so clicks still open the info box.
 -->
+<!-- Main table for computer components, populated by JavaScript -->
 <table id="data-table">
     <!-- Table will be populated dynamically by JavaScript -->
 </table>
 
 </body>
 
+<!-- JavaScript section for dynamic content and interactions -->
 <script>
+    // Object containing data for computer components
     const componeter = {
         cpu: {
             namn: "cpu/processor",
             användning: "cpu används för att utföra instruktioner i programvara och är en central del för datorn",
-            img: "",
+            img: "cpu.jpg",
             socket: "socket är olika för varje företag som skapar processorer och moderkort",  // Add socket class (e.g., "LGA 1700", "AM4")
-            pris: "priset på en cpu varierar beroende på prestanda och märke oftaste dyrare än andra komponenter"
+            pris: "CPU: 3 000–6 000+ kr"
         },
         moderkort: {
             namn: "Moderkort",
             användning: "moderkort fungerar som en central hub för alla datorns komponenter att kommunicera med varandra",
-            img: "",
+            img: "moderkort.jpg",
             casetower: "moderkort finns i olika storlekar ex. atx, micro atx, mini itx mm för att passa i olika chassin",
             socket: "moderkortets socket måste matcha cpu socketen",  // Add socket compatibility (e.g., "LGA 1700", "AM4")
-            pris: "priset på ett moderkort varierar beroende på storlek, märke och funktioner oftaste billigare än cpu"
+            pris: "Moderkort:1 000–3 000+ kr (pris varierar kraftigt efter chipset & funktioner)"
         },
         gpu: {
             namn: "Gpu/grafikkort",
             användning: "gpu används för att rendera bilder och grafik i programvara och är en central del för datorn",
-            img: "",
-            pris: "priset på ett gpu varierar beroende på prestanda och märke oftaste dyrare än cpu"
+            img: "gpu.jpg",
+            pris: "GPU:3 000–20 000+ kr (eller mycket mer i high-end) "
         },
         ram: {
             namn: "RAM",
             användning: "ramminne används för att lagra data temporärt när datorn är påslagen och är snabbare än både ssd och hdd",
-            img: "",
+            img: "ram.jpg",
             ramminne: "ramminne används för att lagra data temporärt när datorn är påslagen och är snabbare än både ssd och hdd",
-            pris: "priset på ramminne varierar beroende på storlek, hastighet och märke oftaste billigare än gpu"
+            pris: "RAM: 1 300–2 400+ kr"
         },
         ssd: {
             namn: "SSD",
-            img: "",
+            img: "ssd.jpg",
             ssdfunktion: "ssd används för att lagra data permanent även när datorn är avstängd och är en elektronisk enhet till skillnad från hdd som är en mekanisk enhet",
             lagring: "ssd är oftast snabbare än hdd för samma pris",
-            pris: "priset på ssd varierar beroende på storlek, hastighet och märke oftaste dyrare än hdd"
+            pris: "SSD: 900–1 800+ kr "
         },
         hdd: {
             namn: "HDD",
-            img: "",
+            img: "hdd.jpg",
             hddfunktion: "hdd används för att lagra data permanent även när datorn är avstängd och är en mekanisk enhet till skillnad från ssd som är en elektronisk enhet",
             lagring: "hdd har oftast större lagringskapacitet än ssd för samma pris",
-            pris: "priset på hdd varierar beroende på storlek, hastighet och märke oftaste billigare än ssd"
+            pris: "HDD: 800–1 100+ kr"
         },
         psu: {
             namn: "PSU",
             användning: "psu används för att förse datorns komponenter med ström och är en viktig del för datorn",
-            img: "",
-            pris: "priset på en psu varierar beroende på effekt, märke och certifiering oftaste billigare än hdd"
+            img: "psu.jpg",
+            pris: "PSU: 700–1 400+ kr"
         },
         case: {
             namn: "chassi/case",
             användning: "chassi används för att hålla datorns komponenter i en strukturerad och och är en viktig del för datorn",
-            img: "",
+            img: "chassi.jpg",
             casetower: "casetower är olika storlekar på chassin ex. atx, micro atx, mini itx mm",
-            pris: "priset på ett chassi varierar beroende på storlek, märke och funktioner oftaste billigare än psu"
+            pris: "Chassi: 600–2 300+ kr"
         },
         fan: {
             namn: "Chassifläkt/Fan",
             användning: "chassifläkt används för att kyla datorns komponenter och är en viktig del för datorn",
-            img: "",
-            pris: "priset på en chassifläkt varierar beroende på storlek, märke och funktioner oftaste billigare än case"
+            img: "fläkt.jpg",
+            pris: "Chassifläktar: ca 70–150+ kr/st"
         },
         cpukylare: {
             namn: "CPU Kylare",
             användning: "cpu kylare används för att kyla processorn och är en viktig del för datorn",
-            img: "",            
+            img: "cpukylare.jpg",            
             socket: "kylar socketen måste matcha moderkortets socket och cpu socketen",  // Add socket compatibility (e.g., "LGA 1700, AM4")
-            pris: "priset på en cpu kylare varierar beroende på prestanda, märke och typ (luft/vatten) oftaste billigare än fan"
+            pris: "CPU-kylare: 200–1 000 kr beroende på modell"
         }
     };
 
-    // Dynamically generate table based on components in the script
+    // Function to dynamically generate the main components table
     function generateTable() {
+        // Get the table element
         const table = document.getElementById('data-table');
+        // Get array of component keys
         const components = Object.keys(componeter);
         let row;
         
+        // Loop through components and create table rows and cells
         components.forEach((key, index) => {
+            // Start new row every 5 components
             if (index % 5 === 0) {
                 row = table.insertRow();
             }
+            // Create a new cell
             const cell = row.insertCell();
+            // Add click event to open modal
             cell.onclick = () => openComponentModal(key);
+            // Set cell content with image and label
             cell.innerHTML = `
-                <!-- <img class="component-img" src="${key}.png" alt="${componeter[key].namn || key}"> -->
+                <img class="component-img" src="${componeter[key].img}" alt="${componeter[key].namn || key}">
                 <span class="component-label">${componeter[key].namn || key}</span>
             `;
         });
     }
 
-    // Generate the table when the page loads
+    // Call the function to generate the table on page load
     generateTable();
 
+    // Variable to track the currently opened component
     let currentComponent = null;
 
+    // Function to open the modal for a specific component
     function openComponentModal(componentKey) {
+        // Set current component
         currentComponent = componentKey;
+        // Get data for the component
         const data = componeter[componentKey];
+        // Get modal and overlay elements
         const textbox = document.getElementById('modal-textbox');
         const overlay = document.getElementById('overlay');
         const header = document.getElementById('componeternamn');
         const content = document.getElementById('componentinfo');
 
+        // Set modal header text
         header.textContent = data.namn || componentKey;
         
+        // Build modal content HTML dynamically based on component type
         content.innerHTML = `
             <div class="info-display">
-                ${data.img ? `<img class="component-modal-img" src="${data.img}" alt="${componentKey}">` : ''}
                 ${componentKey !== 'ssd' && componentKey !== 'hdd' ? `
                 <div class="info-item">
                     <label>Användning:</label>
@@ -187,41 +213,53 @@
             </div>
         `;
 
+        // Show the modal and overlay
         textbox.classList.add('show');
         overlay.classList.add('show');
     }
 
+    // Function to close the modal
     function closebtntextbox() {
+        // Get modal and overlay elements
         const textbox = document.getElementById('modal-textbox');
         const overlay = document.getElementById('overlay');
+        // Hide the modal and overlay
         textbox.classList.remove('show');
         overlay.classList.remove('show');
     }
 </script>
+<!-- Overlay div that covers the screen when modal is open, clicks close modal -->
 <div class="textbox-overlay" id="overlay" onclick="closebtntextbox()"></div>
+<!-- Modal container for component information -->
 <div class="textbox-container" id="modal-textbox">
+    <!-- Modal header with component name -->
     <div class="textbox-header">
         <h2 id="componeternamn">information</h2>
     </div>
+    <!-- Modal content area where info is inserted -->
     <div class="textbox-content" id="componentinfo">
         <!-- info här-->
     </div>
+    <!-- Close button for the modal -->
     <button class="closebtntextbox" onclick="closebtntextbox()">stäng</button>
 </div>
 
+<!-- Table for I/O components -->
 <table id="data-class">
     <!-- Table will be populated dynamically by JavaScript -->
 </table>
 
+<!-- Second script section for I/O components -->
 <script>
     // Computer Input/Output Components
+    // Object containing data for I/O (input/output) components
     const inutenheter = {
         keyboard: {
             namn: "Tangentbord",
             typ: "Input-enhet",
             anslutning: "USB, Bluetooth, PS/2",
             användning: "Används för textinmatning och att ge kommandon till datorn",
-            img: "",
+            img: "tangentbord.jpg",
             pris: "Priset varierar beroende på typ (mekaniskt/membrand), funktioner och märke"
         },
         mouse: {
@@ -229,7 +267,7 @@
             typ: "Input-enhet",
             anslutning: "USB, Bluetooth, PS/2",
             användning: "Används för att styra pekaren på skärmen och navigera i program",
-            img: "",
+            img: "mus.jpg",
             pris: "Priset varierar beroende på dpi, funktioner och märke"
         },
         monitor: {
@@ -237,7 +275,7 @@
             typ: "Output-enhet",
             anslutning: "HDMI, DisplayPort, VGA, USB-C",
             användning: "Visar visuell information från datorn som grafik, text och bilder",
-            img: "",
+            img: "skärm.jpg",
             pris: "Priset varierar beroende på storlek, upplösning, paneltyp och uppdateringsfrekvens"
         },
         speakers: {
@@ -245,7 +283,7 @@
             typ: "Output-enhet",
             anslutning: "3.5mm jack, USB, Bluetooth, HDMI",
             användning: "Återger ljud från datorn som musik, spel och systemljud",
-            img: "",
+            img: "högtalare.jpg",
             pris: "Priset varierar beroende på kvalitet, effekt och funktioner"
         },
         printer: {
@@ -253,7 +291,7 @@
             typ: "Output-enhet",
             anslutning: "USB, nätverk (Ethernet/WiFi), trådlöst",
             användning: "Skriver ut fysiska kopior av dokument, bilder och andra filer",
-            img: "",
+            img: "skrivarew.jpg",
             pris: "Priset varierar beroende på typ (bläckstråle/laser), funktioner och hastighet"
         },
         microphone: {
@@ -261,7 +299,7 @@
             typ: "Input-enhet",
             anslutning: "3.5mm jack, USB, Bluetooth",
             användning: "Tar in ljud från användaren för inspelning, kommunikation och röststyrning",
-            img: "",
+            img: "mic.jpg",
             pris: "Priset varierar beroende på kvalitet, typ och funktioner"
         },
         webcam: {
@@ -269,7 +307,7 @@
             typ: "Input-enhet",
             anslutning: "USB, inbyggd",
             användning: "Tar in video och bilder för videokonferenser, streaming och bildinspelning",
-            img: "",
+            img: "webbkamera.jpg",
             pris: "Priset varierar beroende på upplösning, bildhastighet och funktioner"
         },
         headphones: {
@@ -277,7 +315,7 @@
             typ: "Output-enhet",
             anslutning: "3.5mm jack, USB, Bluetooth",
             användning: "Ger privat ljudupplevelse för musik, spel och kommunikation",
-            img: "",
+            img: "hörlurar.jpg",
             pris: "Priset varierar beroende på ljudkvalitet, komfort och funktioner"
         },
         joystick: {
@@ -293,38 +331,52 @@
             typ: "Input-enhet",
             anslutning: "USB, nätverk",
             användning: "Skannar fysiska dokument och bilder till digitala filer",
-            img: "",
+            img: "skanner.jpg",
             pris: "Priset varierar beroende på typ, upplösning och hastighet"
         }
     };
 
-    // Dynamically generate I/O table based on components in the script
+    // Function to dynamically generate the I/O components table
     function generateclasstable() {
+        // Get the I/O table element
         const table = document.getElementById('data-class');
+        // Get array of I/O component keys
         const components = Object.keys(inutenheter);
         let row;
         
+        // Loop through I/O components and create table rows and cells
         components.forEach((key, index) => {
+            // Start new row every 5 components
             if (index % 5 === 0) {  // 5 columns for I/O table
                 row = table.insertRow();
             }
+            // Create a new cell
             const cell = row.insertCell();
+            // Add click event to open modal
             cell.onclick = () => openClassModal(key);
+            // Set cell content with optional image and label
             cell.innerHTML = `
+                ${inutenheter[key].img ? `<img class="component-img" src="${inutenheter[key].img}" alt="${inutenheter[key].namn}">` : ''}
                 <span class="component-label">${inutenheter[key].namn}</span>
             `;
         });
     }
 
+    // Function to open the modal for an I/O component
     function openClassModal(key) {
+        // Get data for the I/O component
         const data = inutenheter[key];
+        // Get modal and overlay elements
         const textbox = document.getElementById('modal-textbox');
         const overlay = document.getElementById('overlay');
+        // Get modal header and content elements
         const header = document.getElementById('componeternamn');
         const content = document.getElementById('componentinfo');
 
+        // Set modal header text
         header.textContent = data.namn;
         
+        // Build modal content HTML for I/O components
         content.innerHTML = `
             <div class="info-display">
                 <div class="info-item">
@@ -346,13 +398,34 @@
             </div>
         `;
 
+        // Show the modal and overlay
         textbox.classList.add('show');
         overlay.classList.add('show');
     }
 
-    // Initialize the class table
+    // Call the function to generate the I/O table on page load
     generateclasstable();
 
 </script>
+
+<!-- Container to add space before the Linux info table -->
+<div style="margin-top: 100px;">
+<!-- Table displaying information about Linux operating system -->
+<table>
+    <tr>
+        <td>Linux är ett operativsystem som används i allt från persondatorer och servrar till mobiltelefoner, routrar och inbyggda system. Ett operativsystem fungerar som en mellanhand mellan datorns hårdvara och de program som användaren kör, och Linux är känt för sin stabilitet, säkerhet och flexibilitet.
+
+Kärnan i Linux kallas Linuxkärnan. Den ansvarar för de mest grundläggande funktionerna i systemet, såsom att hantera processer, minne, lagring och kommunikation med hårdvara. Ovanpå kärnan finns olika systemverktyg och program som tillsammans bildar ett komplett operativsystem. Dessa levereras ofta i form av så kallade distributioner, till exempel Ubuntu, Debian, Fedora och Arch Linux. Varje distribution kombinerar Linuxkärnan med olika program, skrivbordsmiljöer och inställningar anpassade för olika behov.
+
+Linux använder ett fleranvändar- och multitaskingsystem. Det innebär att flera användare kan vara inloggade samtidigt och att många program kan köras parallellt utan att störa varandra. Systemet har även ett avancerat rättighetssystem som styr vilka filer och resurser olika användare och program får tillgång till, vilket bidrar till hög säkerhet.
+
+En central del av Linux är att det är öppen källkod. Öppen källkod innebär att programmets källkod är fritt tillgänglig för alla att läsa, studera, ändra och distribuera vidare. Linuxkärnan utvecklas av tusentals programmerare världen över, inklusive både frivilliga och anställda på företag. Utvecklingen samordnas öppet, och förbättringar granskas noggrant innan de läggs till i systemet.
+
+Den öppna källkodsmodellen ger flera fördelar. Eftersom många utvecklare kan granska koden upptäcks och åtgärdas fel och säkerhetsproblem ofta snabbare än i slutna system. Användare och organisationer kan också anpassa Linux efter sina egna behov, till exempel genom att optimera systemet för särskild hårdvara eller specifika användningsområden. Samtidigt innebär öppen källkod att ingen enskild aktör äger Linux, vilket minskar beroendet av ett visst företag.
+
+Sammanfattningsvis fungerar Linux som ett kraftfullt och flexibelt operativsystem där Linuxkärnan hanterar hårdvaran och övriga systemkomponenter ger användaren funktionalitet. Genom att vara öppen källkod möjliggör Linux samarbete, transparens och anpassningsbarhet, vilket är en viktig förklaring till dess breda användning i dagens IT-värld.</td>
+    </tr>
+</table>
+</div>
 
 </html>

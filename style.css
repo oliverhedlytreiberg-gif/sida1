@@ -1,3 +1,4 @@
+/* Body styling: Sets the background gradient, full height, no margins, and default text color */
 body{
     background-image: linear-gradient( 45deg, black, rgb(75, 75, 75), rgb(110, 110, 110), rgb(138, 138, 138), rgb(167, 167, 167));
     height: 200vh;
@@ -5,6 +6,7 @@ body{
     color: black;
 }
 
+/* Textbox class: Positions the modal popup in the center of the screen */
 .textbox{
     position: absolute;
     top: 50px;
@@ -15,6 +17,7 @@ body{
     z-index: 1000;
 }
 
+/* Textbox-container: Styles the modal container with glassmorphism effect, padding, and borders */
 .textbox-container {
     max-width: 600px;
     margin: auto;
@@ -28,20 +31,23 @@ body{
     -webkit-backdrop-filter: blur(10px);   
 }
 
-
+/* Textbox-content: Styles the main content area inside the modal */
 .textbox-content{
     font-size: 18px;
     line-height: 1.5;
     color: black;
 }
+/* Removes default margin from paragraphs in textbox-content */
 .textbox-content p {
     margin: 0;
 }
+/* Textbox-header: Styles the header text in the modal */
 .textbox-header {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
+/* Table styling: Centers the table, adds spacing, glassmorphism background, and rounded corners */
 table {
     margin: 20px auto;
     border-collapse: separate;
@@ -54,6 +60,7 @@ table {
     max-width: 90%;
 }
 
+/* TD (table cell) styling: Adds padding, border, centers text, makes clickable with hover effect */
 td {
     padding: 15px 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -64,10 +71,12 @@ td {
     vertical-align: middle;
 }
 
+/* TD hover: Changes background on mouse over for visual feedback */
 td:hover {
     background-color: rgba(255, 255, 255, 0.25);
 }
 
+/* Textbox-overlay: Dark overlay behind the modal when shown */
 .textbox-overlay {
     display: none;
     position: fixed;
@@ -79,10 +88,12 @@ td:hover {
     z-index: 999;
 }
 
+/* Shows the overlay when the 'show' class is added */
 .textbox-overlay.show {
     display: block;
 }
 
+/* Modal-textbox: The main modal container, centered on screen */
 #modal-textbox {
     display: none;
     position: fixed;
@@ -94,20 +105,24 @@ td:hover {
     width: 90%;
 }
 
+/* Shows the modal when the 'show' class is added */
 #modal-textbox.show {
     display: block;
 }
 
+/* Duplicate textbox-header: Styles the header text in the modal (redundant with earlier) */
 .textbox-header {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
+/* Textbox-content div: Adds margin to divs inside textbox-content */
 .textbox-content div {
     margin-bottom: 15px;
 }
 
+/* Textbox-content label: Styles labels inside textbox-content */
 .textbox-content label {
     display: block;
     font-weight: bold;
@@ -115,14 +130,22 @@ td:hover {
     font-size: 14px;
 }
 
+/* Info-display: Container for info items with bottom margin */
 .info-display {
     margin-bottom: 20px;
 }
 
+/* Info-item: Styles each info section in the modal with box-like appearance */
 .info-item {
     margin-bottom: 15px;
+    padding: 15px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: black;
 }
 
+/* Info-item p: Styles paragraphs inside info-item */
 .info-item p {
     margin: 5px 0;
     padding: 0;
@@ -131,6 +154,7 @@ td:hover {
     line-height: 1.6;
 }
 
+/* Close button: Styles the close button in the modal */
 .closebtntextbox {
     background-color: red;
     color: black;
@@ -144,17 +168,18 @@ td:hover {
     margin-top: 15px;
 }
 
-/* Image and label helpers for component cells */
+/* Component-img: Styles images in table cells for components */
 .component-img {
     display: block;
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 60px;
+    max-height: 60px;
     width: auto;
     height: auto;
     margin: 0 auto 8px auto;
     object-fit: contain;
 }
 
+/* Component-label: Styles labels in table cells for components */
 .component-label {
     display: block;
     font-weight: bold;
@@ -162,15 +187,16 @@ td:hover {
     color: black;
 }
 
-/* Make sure the table cells keep content centered when using images */
+/* Ensure table cells keep content centered when using images */
 td { 
     vertical-align: middle;
 }
 
+/* Component-model-img: Styles larger images in modals */
 .component-model-img {
     display: block;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 150px;
+    max-height: 150px;
     width: auto;
     height: auto;
     margin: 0 auto 15px auto;
