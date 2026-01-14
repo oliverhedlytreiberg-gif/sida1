@@ -207,3 +207,27 @@ td {
 #data-class {
     margin: 20px auto;
 }
+
+/* Side button: Fixed position on the right side, glassmorphism style */
+.side-button {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: black;
+    padding: 15px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+}
+
+/* Hover effect for side button */
+.side-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
