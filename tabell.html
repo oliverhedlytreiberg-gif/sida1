@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabell</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="side-button" onclick="window.location.href='index.html'">Tillbaka till index</button>
+    <h1 style="text-align: center;">Exempel på en Tabell</h1>
+    <div style="max-width: 600px; margin: 0 auto;">
+    <table class="simple-table" border="1">
+        <tr>
+            <th>ämne</th>
+            <th>förkortning</th>
+            <th>lärare</th>
+        </tr>
+        <tr>
+            <td onclick="openSubjectModal('Dator&nätverksteknik')">Dator&nätverksteknik</td>
+            <td>DAODAC</td>
+            <td onclick="openTeacherModal('Saimon')">Saimon</td>
+        </tr>
+        <tr>
+            <td onclick="openSubjectModal('Webbutveckling')">Webbutveckling</td>
+            <td>WEUWEB</td>
+            <td onclick="openTeacherModal('Saimon')">Saimon</td>
+        </tr>
+        <tr>
+            <td onclick="openSubjectModal('Programmering 1')">Programmering 1</td>
+            <td>PRRPRR</td>
+            <td onclick="openTeacherModal('Tobias')">Tobias</td>
+        </tr>
+    </table>
+    </div>   
+</body>
+
+<!-- JavaScript for modal -->
+<script>
+    // Subject facts
+    const subjects = {
+        "Dator&nätverksteknik": {
+            fact: "Inom dator&nätverksteknik handlar det mycket om hur datorer är uppbyggda rent komponentiskt och rent mjukvaru mäsigt T.ex Windows oprativsystem eller linux olika distrubutioner som ubuntu. Inom nätverkstekniska delen av ämnet kommer det handla mycket om hur routrar funkar och vad wan, lan och vad wlan är och man kommer få veta vad TCP/IP står för. Du kommer även lära dig om kommunikation mellan olika tekniska komponenter som hur en router är kopplad till din hemmadator eller telefon via wifi och du kommer lära dig mycket om fibernät och hur det funkar."
+        },
+        "Webbutveckling": {
+            fact: "Inom webbutvecklingen 1 fokuserar man på att lära sig skapa webbsidor som sedan kommer kunna användas av andra personer. Man kommer lära sig vad HTML, CSS och hur man kan använda javascript på ett sätt som kommer göra din webbsida användbar för alla åldersgrupper och personer med nedsättningar och har svårt att röra på sina händer för enligt lag är det vår plikt som webbutvecklare att göra så vår sida är andvändbar för alla även om de har synskador eller inte kan röra händerna utan att skaka på grunda av alzheimers. Med hjälpa av HTML kommer vi få sidan struktur och från CSS kommer vi få sidans utseende och javascript kommer ge sidan interaktivitet."
+        },
+        "Programmering 1": {
+            fact: "I programmering 1 kommer man fokusera mer på att lära sig skriva fin kod istället för att skriva funktionel kod det är en grund till att kunna lära sig flera olika språk i framtiden för att lära sig grunden av ett språk kommer hjälpa en lära sig grunden till de flesta språk efter som att det har mycket lik struktur med varandra."
+        }
+    };
+
+    // Teacher facts
+    const teachers = {
+        Saimon: {
+            fact: "Saimon är en person med mycket efernhet inom webbserver-teknik samt dator&nätverksteknik, han har mycket kunskap inom hur datorer samt webbserverar."
+        },
+        Tobias: {
+            fact: "Tobias är en lärare med ungefär 15års erfarenhet inom programmering i flera olika språk T.ex c#, java och flera olika språk."
+        }
+    };
+
+    // Function to open the modal for a subject
+    function openSubjectModal(subject) {
+        const data = subjects[subject];
+        const textbox = document.getElementById('modal-textbox');
+        const overlay = document.getElementById('overlay');
+        const header = document.getElementById('componeternamn');
+        const content = document.getElementById('componentinfo');
+
+        header.textContent = subject;
+        content.innerHTML = `<p>${data.fact}</p>`;
+
+        textbox.classList.add('show');
+        overlay.classList.add('show');
+    }
+
+    // Function to open the modal for a teacher
+    function openTeacherModal(teacher) {
+        const data = teachers[teacher];
+        const textbox = document.getElementById('modal-textbox');
+        const overlay = document.getElementById('overlay');
+        const header = document.getElementById('componeternamn');
+        const content = document.getElementById('componentinfo');
+
+        header.textContent = teacher;
+        content.innerHTML = `<p>${data.fact}</p>`;
+
+        textbox.classList.add('show');
+        overlay.classList.add('show');
+    }
+
+    // Function to close the modal
+    function closebtntextbox() {
+        const textbox = document.getElementById('modal-textbox');
+        const overlay = document.getElementById('overlay');
+        textbox.classList.remove('show');
+        overlay.classList.remove('show');
+    }
+</script>
+
+<!-- Overlay div that covers the screen when modal is open, clicks close modal -->
+<div class="textbox-overlay" id="overlay" onclick="closebtntextbox()"></div>
+<!-- Modal container for teacher information -->
+<div class="textbox-container" id="modal-textbox">
+    <!-- Modal header with teacher name -->
+    <div class="textbox-header">
+        <h2 id="componeternamn">information</h2>
+    </div>
+    <!-- Modal content area where info is inserted -->
+    <div class="textbox-content" id="componentinfo">
+        <!-- info här-->
+    </div>
+    <!-- Close button for the modal -->
+    <button class="closebtntextbox" onclick="closebtntextbox()">stäng</button>
+</div>
+
+</html>

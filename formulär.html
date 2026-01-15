@@ -4,20 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulär Exempel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Exempel på ett Formulär</h1>
+    <button class="side-button" onclick="window.location.href='index.html'">Tillbaka till index</button>
+    <h1 style="text-align: center;">Feedback Formulär</h1>
+    <div style="max-width: 600px; margin: 0 auto;">
     <form action="/submit" method="post">
-        <label for="name">Namn:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <label for="rating">Hur skulle du betygsätta denna webbsida? (1-5)</label><br>
+        <select id="rating" name="rating" required>
+            <option value="">Välj ett betyg</option>
+            <option value="1">1 - Mycket dålig</option>
+            <option value="2">2 - Dålig</option>
+            <option value="3">3 - Okej</option>
+            <option value="4">4 - Bra</option>
+            <option value="5">5 - Mycket bra</option>
+        </select><br><br>
 
-        <label for="email">E-post:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <label for="improvement">Vad skulle kunna förbättras på denna webbsida?</label><br>
+        <textarea id="improvement" name="improvement" rows="6" cols="50" placeholder="Beskriv vad du tycker kan förbättras..." required></textarea><br><br>
 
-        <label for="message">Meddelande:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+        <label for="feature">Vilka nya funktioner skulle du vilja se?</label><br>
+        <textarea id="feature" name="feature" rows="4" cols="50" placeholder="Föreslå nya funktioner eller förbättringar..."></textarea><br><br>
 
-        <input type="submit" value="Skicka">
+        <label for="feedback">Övrig feedback eller kommentarer:</label><br>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Dela dina tankar och idéer..."></textarea><br><br>
+
+        <input type="submit" value="Skicka feedback">
     </form>
+    </div>
 </body>
 </html>
