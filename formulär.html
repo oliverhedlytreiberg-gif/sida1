@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="side-button" onclick="window.location.href='index.html'">Tillbaka till index</button>
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="window.location.href='index.html'">Tillbaka till index</button>
+    </div>
     <h1 style="text-align: center;">Feedback Formulär</h1>
     <div style="max-width: 600px; margin: 0 auto;">
     <form action="/submit" method="post">
@@ -22,13 +24,13 @@
         </select><br><br>
 
         <label for="improvement">Vad skulle kunna förbättras på denna webbsida?</label><br>
-        <textarea id="improvement" name="improvement" rows="6" cols="50" placeholder="Beskriv vad du tycker kan förbättras..." required></textarea><br><br>
+        <textarea id="improvement" name="improvement" rows="6" cols="50" placeholder="Beskriv vad du tycker kan förbättras..." required style="resize: none;"></textarea><br><br>
 
         <label for="feature">Vilka nya funktioner skulle du vilja se?</label><br>
-        <textarea id="feature" name="feature" rows="4" cols="50" placeholder="Föreslå nya funktioner eller förbättringar..."></textarea><br><br>
+        <textarea id="feature" name="feature" rows="4" cols="50" placeholder="Föreslå nya funktioner eller förbättringar..." style="resize: none;"></textarea><br><br>
 
         <label for="feedback">Övrig feedback eller kommentarer:</label><br>
-        <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Dela dina tankar och idéer..."></textarea><br><br>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Dela dina tankar och idéer..." style="resize: none;"></textarea><br><br>
 
         <input type="submit" value="Skicka feedback">
     </form>

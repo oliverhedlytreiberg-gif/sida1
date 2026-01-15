@@ -246,11 +246,16 @@ td {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Side button: Fixed position on the right side, glassmorphism style */
-.side-button {
+/* Dropdown menu container */
+.dropdown {
     position: fixed;
+    top: 20px;
     right: 20px;
-    top: 20px;
+    z-index: 1001;
+}
+
+/* Dropdown button */
+.dropdown-btn {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
@@ -263,33 +268,52 @@ td {
     font-weight: bold;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     transition: background-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Hover effect for side button */
-.side-button:hover {
+.dropdown-btn:hover {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* Second side button for table */
-.side-button-table {
-    position: fixed;
-    right: 177px;
-    top: 20px;
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    color: black;
-    padding: 15px 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+    min-width: 200px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.2s;
+    border-radius: 15px;
+    z-index: 1001;
 }
 
-/* Hover effect for second side button */
-.side-button-table:hover {
+.dropdown-content a {
+    color: black;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-content a:first-child {
+    border-radius: 15px 15px 0 0;
+}
+
+.dropdown-content a:last-child {
+    border-radius: 0 0 15px 15px;
+}
+
+.dropdown-content a:hover {
     background: rgba(255, 255, 255, 0.25);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
