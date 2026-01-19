@@ -1,7 +1,7 @@
 /* Body styling: Sets the background gradient, full height, no margins, and default text color */
 body{
     background-image: linear-gradient( 45deg, black, rgb(75, 75, 75), rgb(110, 110, 110), rgb(138, 138, 138), rgb(167, 167, 167));
-    height: 200vh;
+    height: 255vh;
     margin: 0;
     color: black;
 }
