@@ -317,3 +317,11 @@ td {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.box{
+    border: 200px solid black;
+    padding: 1px;
+    margin: 88px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    text-align: center;
+}
